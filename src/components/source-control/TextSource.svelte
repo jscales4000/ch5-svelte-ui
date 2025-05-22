@@ -1,8 +1,13 @@
 <script lang="ts">
   import BaseSourceControl from './BaseSourceControl.svelte';
+  import VideoStreamComponent from './VideoStreamComponent.svelte';
   
   export let sourceId: number = 0;
   export let sourceLabel: string = 'Text';
+  
+  // Camera stream configuration
+  // Note: Update with your actual camera IP and credentials
+  export const cameraStreamUrl: string = 'rtsp://admin:password@camera-ip:554/1.h264';
   
   // Default text content with 4 lines
   const defaultText = "Please login into PC to start your presentation\nThis room has camera control, enable it by pressing camera button\n\n";
@@ -66,91 +71,103 @@
         </div>
         
         <div class="modal-content">
-          <!-- Top row: Pan/Tilt and Zoom controls side by side -->
-          <div class="controls-row">
-            <!-- Pan/Tilt controls -->
-            <div class="control-section">
-              <h4 class="control-label">Pan/Tilt</h4>
-              <div class="pantilt-pad">
-                <button 
-                  class="direction-btn up" 
-                  on:click={() => handlePanTilt('up')}
-                  aria-label="Tilt Up"
-                >
-                  <i class="fas fa-chevron-up"></i>
-                </button>
-                
-                <button 
-                  class="direction-btn right" 
-                  on:click={() => handlePanTilt('right')}
-                  aria-label="Pan Right"
-                >
-                  <i class="fas fa-chevron-right"></i>
-                </button>
-                
-                <button 
-                  class="direction-btn down" 
-                  on:click={() => handlePanTilt('down')}
-                  aria-label="Tilt Down"
-                >
-                  <i class="fas fa-chevron-down"></i>
-                </button>
-                
-                <button 
-                  class="direction-btn left" 
-                  on:click={() => handlePanTilt('left')}
-                  aria-label="Pan Left"
-                >
-                  <i class="fas fa-chevron-left"></i>
-                </button>
-                
-                <div class="center-btn"></div>
+          <!-- Video stream at the top of the modal -->
+          <div class="video-section">
+            <VideoStreamComponent
+              streamUrl={cameraStreamUrl}
+              stretch={true}
+              aspectRatio="16:9"
+            />
+          </div>
+          
+          <!-- Controls area below video -->
+          <div class="controls-area">
+            <!-- Top row: Pan/Tilt and Zoom controls side by side -->
+            <div class="controls-row">
+              <!-- Pan/Tilt controls -->
+              <div class="control-section">
+                <h4 class="control-label">Pan/Tilt</h4>
+                <div class="pantilt-pad">
+                  <button 
+                    class="direction-btn up" 
+                    on:click={() => handlePanTilt('up')}
+                    aria-label="Tilt Up"
+                  >
+                    <i class="fas fa-chevron-up"></i>
+                  </button>
+                  
+                  <button 
+                    class="direction-btn right" 
+                    on:click={() => handlePanTilt('right')}
+                    aria-label="Pan Right"
+                  >
+                    <i class="fas fa-chevron-right"></i>
+                  </button>
+                  
+                  <button 
+                    class="direction-btn down" 
+                    on:click={() => handlePanTilt('down')}
+                    aria-label="Tilt Down"
+                  >
+                    <i class="fas fa-chevron-down"></i>
+                  </button>
+                  
+                  <button 
+                    class="direction-btn left" 
+                    on:click={() => handlePanTilt('left')}
+                    aria-label="Pan Left"
+                  >
+                    <i class="fas fa-chevron-left"></i>
+                  </button>
+                  
+                  <div class="center-btn"></div>
+                </div>
+              </div>
+              
+              <!-- Zoom controls -->
+              <div class="control-section">
+                <h4 class="control-label">Zoom</h4>
+                <div class="zoom-buttons">
+                  <button 
+                    class="zoom-btn" 
+                    on:click={() => handleZoom('out')}
+                    aria-label="Zoom Out"
+                  >
+                    <i class="fas fa-search-minus"></i>
+                  </button>
+                  
+                  <div class="zoom-level">
+                    <div class="zoom-indicator"></div>
+                  </div>
+                  
+                  <button 
+                    class="zoom-btn" 
+                    on:click={() => handleZoom('in')}
+                    aria-label="Zoom In"
+                  >
+                    <i class="fas fa-search-plus"></i>
+                  </button>
+                </div>
               </div>
             </div>
             
-            <!-- Zoom controls -->
-            <div class="control-section">
-              <h4 class="control-label">Zoom</h4>
-              <div class="zoom-buttons">
-                <button 
-                  class="zoom-btn" 
-                  on:click={() => handleZoom('out')}
-                  aria-label="Zoom Out"
-                >
-                  <i class="fas fa-search-minus"></i>
+            <!-- Presets -->  
+            <div class="control-section presets-section">
+              <h4 class="control-label">Camera Presets</h4>
+              <div class="preset-buttons">
+                <button class="preset-btn" on:click={() => handlePreset(1)}>
+                  <span class="preset-number">1</span>
+                  <span class="preset-name">Wide View</span>
                 </button>
-                
-                <div class="zoom-level">
-                  <div class="zoom-indicator"></div>
-                </div>
-                
-                <button 
-                  class="zoom-btn" 
-                  on:click={() => handleZoom('in')}
-                  aria-label="Zoom In"
-                >
-                  <i class="fas fa-search-plus"></i>
+                <button class="preset-btn" on:click={() => handlePreset(2)}>
+                  <span class="preset-number">2</span>
+                  <span class="preset-name">Podium</span>
+                </button>
+                <button class="preset-btn" on:click={() => handlePreset(3)}>
+                  <span class="preset-number">3</span>
+                  <span class="preset-name">Whiteboard</span>
                 </button>
               </div>
-            </div>
-          </div>
-          
-          <!-- Presets -->  
-          <div class="control-section presets-section">
-            <h4 class="control-label">Camera Presets</h4>
-            <div class="preset-buttons">
-              <button class="preset-btn" on:click={() => handlePreset(1)}>
-                <span class="preset-number">1</span>
-                <span class="preset-name">Wide View</span>
-              </button>
-              <button class="preset-btn" on:click={() => handlePreset(2)}>
-                <span class="preset-number">2</span>
-                <span class="preset-name">Podium</span>
-              </button>
-              <button class="preset-btn" on:click={() => handlePreset(3)}>
-                <span class="preset-number">3</span>
-                <span class="preset-name">Whiteboard</span>
-              </button>
             </div>
           </div>
         </div>
@@ -279,6 +296,24 @@
   
   .modal-content {
     padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    flex: 1;
+    overflow: hidden;
+  }
+  
+  /* Video section styling */
+  .video-section {
+    width: 100%;
+    /* Height that works on both TS-770 and TS-1070 */
+    height: 300px;
+    margin-bottom: 0.5rem;
+    /* Note: No background color here to allow video to show through */
+  }
+  
+  /* Controls area container */
+  .controls-area {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
