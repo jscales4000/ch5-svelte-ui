@@ -5,7 +5,7 @@ import {getWebXPanel, runsInContainerApp} from '@crestron/ch5-webxpanel'
 
 const { isActive, WebXPanel, WebXPanelConfigParams } = getWebXPanel(!runsInContainerApp());
 const config: Partial<typeof WebXPanelConfigParams> = {
-  host: "192.168.2.122",
+  host: "192.168.2.151",
   ipId: "0x04",
   roomId: "",
   authToken: ""

@@ -1,7 +1,7 @@
 {
   "name": "my-ch5-ui",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.5.1",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -21,7 +21,7 @@
     "svelte": "^5.28.1",
     "svelte-check": "^4.1.6",
     "svelte-preprocess": "^6.0.3",
-    "tailwindcss": "^3.4.17",
+    "tailwindcss": "^3.3.5",
     "tailwindcss-cli": "^0.1.2",
     "typescript": "~5.8.3",
     "vite": "^6.3.5",
