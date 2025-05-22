@@ -1,0 +1,139 @@
+{
+	"name": "svelteOld",
+	"timestamp": "2025-05-19 14:57:55.375",
+	"version": "1.0.0.0",
+	"schema_version": 1,
+	"extra_value": "Crestron MPC3-201-B",
+	"signals": {
+		"states": {
+			"boolean": {
+				"2": {
+					"10": "Airmedia.LoginCode"
+				},
+				"3": {
+					"4": "MPC3201B.MuteFb",
+					"5": "MPC3201B.StartPageActive",
+					"7": "MPC3201B.PowerIsOn",
+					"10": "MPC3201B.ProjectorWarming"
+				}
+			},
+			"numeric": {
+				"2": {
+					"1": "Airmedia.Status",
+					"2": "Airmedia.NumberofUsersCon"
+				},
+				"3": {
+					"1": "MPC3201B.PowerState",
+					"2": "MPC3201B.Bargraph",
+					"3": "MPC3201B.SourceFb",
+					"4": "MPC3201B.SourceBtnCount"
+				}
+			},
+			"string": {
+				"1": {
+					"3": "Diagnostics.Command"
+				},
+				"2": {
+					"1": "Airmedia.ConnectionAddress",
+					"2": "Airmedia.LoginCodeText",
+					"3": "Airmedia.IPAddressText",
+					"4": "Airmedia.HostnameText"
+				},
+				"3": {
+					"1": "MPC3201B.RoomName",
+					"2": "MPC3201B.Source1Name",
+					"3": "MPC3201B.Source2Name",
+					"4": "MPC3201B.Source3Name",
+					"5": "MPC3201B.Source4Name",
+					"6": "MPC3201B.Source5Name",
+					"7": "MPC3201B.Source6Name",
+					"8": "MPC3201B.LampHours"
+				}
+			}
+		},
+		"events": {
+			"boolean": {
+				"Airmedia.Power": {
+					"joinId": 1,
+					"smartObjectId": 2
+				},
+				"Airmedia.Up": {
+					"joinId": 2,
+					"smartObjectId": 2
+				},
+				"Airmedia.Down": {
+					"joinId": 3,
+					"smartObjectId": 2
+				},
+				"Airmedia.Left": {
+					"joinId": 4,
+					"smartObjectId": 2
+				},
+				"Airmedia.Right": {
+					"joinId": 5,
+					"smartObjectId": 2
+				},
+				"Airmedia.Ok": {
+					"joinId": 6,
+					"smartObjectId": 2
+				},
+				"Airmedia.Back": {
+					"joinId": 7,
+					"smartObjectId": 2
+				},
+				"Airmedia.TV": {
+					"joinId": 8,
+					"smartObjectId": 2
+				},
+				"Airmedia.PlayPause": {
+					"joinId": 9,
+					"smartObjectId": 2
+				},
+				"MPC3201B.Power": {
+					"joinId": 1,
+					"smartObjectId": 3
+				},
+				"MPC3201B.VolumeUp": {
+					"joinId": 2,
+					"smartObjectId": 3
+				},
+				"MPC3201B.VolumeDown": {
+					"joinId": 3,
+					"smartObjectId": 3
+				},
+				"MPC3201B.Mute": {
+					"joinId": 4,
+					"smartObjectId": 3
+				},
+				"MPC3201B.StartPageButton": {
+					"joinId": 6,
+					"smartObjectId": 3
+				},
+				"MPC3201B.ScreenUp": {
+					"joinId": 8,
+					"smartObjectId": 3
+				},
+				"MPC3201B.ScreenDown": {
+					"joinId": 9,
+					"smartObjectId": 3
+				}
+			},
+			"numeric": {
+				"MPC3201B.Source": {
+					"joinId": 3,
+					"smartObjectId": 3
+				}
+			},
+			"string": {
+				"Diagnostics.Debug": {
+					"joinId": 1,
+					"smartObjectId": 1
+				},
+				"Diagnostics.Error": {
+					"joinId": 2,
+					"smartObjectId": 1
+				}
+			}
+		}
+	}
+}

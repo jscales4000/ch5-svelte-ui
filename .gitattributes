@@ -1,0 +1,52 @@
+# Set default behavior to automatically normalize line endings
+* text=auto eol=lf
+
+# Text files that should always use LF line endings
+*.c text
+*.css text
+*.html text
+*.js text
+*.json text
+*.md text
+*.svelte text
+*.ts text
+*.xml text
+*.yml text
+*.yaml text
+*.sh text
+
+# Windows-specific files that should use CRLF
+*.cmd text eol=crlf
+*.bat text eol=crlf
+*.ps1 text eol=crlf
+
+# Binary files that should not be modified
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.svg binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.eot binary
+*.mp3 binary
+*.wav binary
+*.mp4 binary
+*.webm binary
+*.mov binary
+*.pdf binary
+*.zip binary
+*.gz binary
+*.tar binary
+*.exe binary
+*.dll binary
+*.so binary
+*.dylib binary
+*.pdb binary
+
+# CH5 specific files
+*.c3p binary
+*.c3pz binary
+*.c3pz.bak binary
